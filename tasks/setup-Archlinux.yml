@@ -1,9 +1,13 @@
 ---
 - name: Ensure MySQL Python libraries are installed.
-  pacman: "name=mysql-python state=present"
+  pacman:
+    name: mysql-python
+    state: present
 
 - name: Ensure MySQL packages are installed.
-  pacman: "name={{ item }} state=present"
+  pacman:
+    name: "{{ item }}"
+    state: present
   with_items: "{{ mysql_packages }}"
   register: arch_mysql_install_packages
 
